@@ -43,6 +43,7 @@ function App() {
       };
       setMessages((prev) => [...prev, botMessage]);
       setIsLoading(false);
+
     }, 600);
   };
 

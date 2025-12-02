@@ -1,6 +1,16 @@
+import { useEffect, useRef } from "react";
 import MessageBubble from "./MessageBubble.jsx";
 
 function MessageList({ messages, isLoading }) {
+
+  const endRef = useRef(null);
+
+  useEffect(() => {
+    if (endRef.current) {
+      endRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [messages, isLoading]);
+
   return (
     <div className="messages-container">
       {messages.map((msg) => (
@@ -21,6 +31,9 @@ function MessageList({ messages, isLoading }) {
           </div>
         </div>
       )}
+
+       <div ref={endRef} />
+       
     </div>
   );
 }

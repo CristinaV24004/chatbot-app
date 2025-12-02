@@ -1,13 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 function ChatInput({ onSend, disabled }) {
   const [text, setText] = useState("");
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    if (!disabled && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [disabled]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!text.trim()) return;
-    onSend(text);
+    const trimmed = text.trim();
+    if (!trimmed) return;
+
+    onSend(trimmed);
     setText("");
+
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
   };
 
   return (
@@ -18,12 +31,13 @@ function ChatInput({ onSend, disabled }) {
       <input
         id="chat-input"
         type="text"
+        ref={inputRef}
         value={text}
         onChange={(e) => setText(e.target.value)}
-        placeholder="Ask Leonardo about art, science, or invention..."
+        placeholder="Ask Leonardo about art, science, invention, or anatomy..."
         disabled={disabled}
       />
-      <button type="submit" disabled={disabled}>
+      <button type="submit" disabled={disabled || !text.trim()}>
         Send
       </button>
     </form>
