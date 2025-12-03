@@ -1,4 +1,5 @@
 import LeonardoPortrait from "../../assets/leonardo-portrait.jpeg";
+import Navbar from "../Navbar.jsx";
 
 function ChatHeader() {
   return (
@@ -11,12 +12,13 @@ function ChatHeader() {
         />
 
         <div className="chat-title-block">
-          <h1>Leonardo da Vinci</h1>
+          <h1>Historical AI Chatbot: Leonardo da Vinci</h1>
           <p className="chat-subtitle">
             Renaissance polymath • Painter • Inventor • Forever curious about your questions
           </p>
         </div>
       </div>
+      <Navbar />
     </header>
   );
 }

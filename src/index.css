@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=EB+Garamond:wght@400;600&family=Crimson+Pro:wght@400;600&family=Lora:wght@400;500&display=swap');
 
 :root {
+  min-height: 100vh;
 
   /* Backgrounds (Parchment) */
   --parchment-light: #F5E8C6;
@@ -30,6 +31,12 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 
 body {
