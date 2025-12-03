@@ -60,17 +60,6 @@ function App() {
 
       <main className="chat-shell" aria-label="Leonardo da Vinci chatbot">
         <ChatHeader />
-        <section
-          className="chat-main"
-          aria-live="polite"
-          aria-label="Chat messages"
-          role="log"
-        >
-          <MessageList messages={messages} isLoading={isLoading} />
-        </section>
-        <ChatInput onSend={handleSendMessage} disabled={isLoading} />
-      <ChatHeader />
-      <main className="main-content">
         <Routes>
           <Route
             path="/"
@@ -83,7 +72,6 @@ function App() {
             }
           />
           <Route path="/history" element={<History />} />
-
           <Route path="/about" element={<About />} />
         </Routes>
       </main>
