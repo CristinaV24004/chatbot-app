@@ -4,12 +4,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-/*   background-color: var(--parchment-light);*/ 
   padding: 1rem;
 }
 
 #myVideo {
-  /* background-color: #000000; */
+  opacity: 75%;
   z-index: -1;
   position: fixed;
   right: 0;
