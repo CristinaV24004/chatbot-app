@@ -9,6 +9,8 @@ import ChatHeader from "./components/chat/ChatHeader.jsx";
 import { generateLocalReply } from "./services/leonardoLocal.js";
 import "./App.css";
 
+import background from "./assets/background.mp4"
+
 const initialMessages = [
   {
     id: 1,
@@ -51,6 +53,22 @@ function App() {
 
   return (
     <div className="app">
+
+      <video autoPlay muted loop id="myVideo">
+        <source src={background} type="video/mp4" />
+      </video>
+
+      <main className="chat-shell" aria-label="Leonardo da Vinci chatbot">
+        <ChatHeader />
+        <section
+          className="chat-main"
+          aria-live="polite"
+          aria-label="Chat messages"
+          role="log"
+        >
+          <MessageList messages={messages} isLoading={isLoading} />
+        </section>
+        <ChatInput onSend={handleSendMessage} disabled={isLoading} />
       <ChatHeader />
       <main className="main-content">
         <Routes>
