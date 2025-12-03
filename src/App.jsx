@@ -1,9 +1,13 @@
-import { useState } from "react";
-import "./App.css";
+import React, { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+
+import Chat from "./pages/Chat.jsx";
+import History from "./pages/MessageHistory.jsx";
+import About from "./pages/About.jsx";
 import ChatHeader from "./components/chat/ChatHeader.jsx";
-import MessageList from "./components/chat/MessageList.jsx";
-import ChatInput from "./components/chat/ChatInput.jsx";
+
 import { generateLocalReply } from "./services/leonardoLocal.js";
+import "./App.css";
 
 const initialMessages = [
   {
@@ -32,7 +36,6 @@ function App() {
     setMessages((prev) => [...prev, userMessage]);
     setIsLoading(true);
 
-    // TEMPORARY: placeholder bot reply
     setTimeout(() => {
       const replyText = generateLocalReply(trimmed);
       const botMessage = {
@@ -43,23 +46,28 @@ function App() {
       };
       setMessages((prev) => [...prev, botMessage]);
       setIsLoading(false);
-
     }, 600);
   };
 
   return (
     <div className="app">
-      <main className="chat-shell" aria-label="Leonardo da Vinci chatbot">
-        <ChatHeader />
-        <section
-          className="chat-main"
-          aria-live="polite"
-          aria-label="Chat messages"
-          role="log"
-        >
-          <MessageList messages={messages} isLoading={isLoading} />
-        </section>
-        <ChatInput onSend={handleSendMessage} disabled={isLoading} />
+      <ChatHeader />
+      <main className="main-content">
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Chat
+                messages={messages}
+                isLoading={isLoading}
+                handleSendMessage={handleSendMessage}
+              />
+            }
+          />
+          <Route path="/history" element={<History />} />
+
+          <Route path="/about" element={<About />} />
+        </Routes>
       </main>
     </div>
   );

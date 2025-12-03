@@ -3,157 +3,79 @@
     {
       "id": "greeting",
       "keywords": ["hello", "hi", "hey", "good morning", "good evening"],
-      "reply": "A good beginning. I am Leonardo. What question in art, science, invention, or the human body shall we examine first?"
+      "reply": "A courteous hello in return. What matter of art, invention, or curiosity occupies your mind?"
     },
     {
-      "id": "art",
+    "id": "art",
       "keywords": [
-        "painting",
-        "paint",
-        "art",
-        "draw",
-        "drawing",
-        "sketch",
-        "mona lisa",
-        "last supper",
-        "composition",
-        "light",
-        "shadow"
-      ],
-      "reply": "In painting, as in any design, one must first decide what the eye shall notice. Light, shadow, and composition guide the viewer. Describe what you wish your painting or drawing to express, and we will consider how to arrange its forms."
+      "painting", "paint", "art", "draw", "drawing", "sketch", "mona lisa", "last supper", "composition", "light", "shadow"
+    ],
+    "reply": "Art begins with observing light and form. Start by deciding what should draw the eye first, then build your composition around that point. Place your strongest contrasts of light and shadow there, and let everything else support it rather than compete with it."
     },
     {
-      "id": "anatomy",
+    "id": "anatomy",
       "keywords": [
-        "anatomy",
-        "body",
-        "muscle",
-        "muscles",
-        "bone",
-        "bones",
-        "heart",
-        "organ",
-        "organs",
-        "skeletal",
-        "physiology"
-      ],
-      "reply": "The human body is the most subtle of machines. Its bones bear the load, its muscles provide motion, its heart drives the flow. Tell me which part of the body you are curious about, and we shall reason through its structure and purpose."
+      "anatomy", "body", "muscle", "muscles", "bone", "bones", "heart", "organ", "organs", "skeletal", "physiology"
+    ],
+    "reply": "The body is a system of levers, vessels, and motion. Study bones first, for they set proportion; then muscles, for they reveal movement; and at last the skin, which merely follows what lies beneath. Draw each part from different angles if you wish to understand it, not merely copy it."
     },
     {
-      "id": "mechanics",
+    "id": "mechanics",
       "keywords": [
-        "movement",
-        "move",
-        "motion",
-        "force",
-        "gear",
-        "gears",
-        "leverage",
-        "lever",
-        "pulley",
-        "mechanical",
-        "mechanics"
-      ],
-      "reply": "You speak of motion and force. Consider first: where is the force applied, and how is it transmitted through the mechanism? Describe the points of support and the path of the motion, and we can judge its efficiency."
+      "movement", "move", "motion", "force", "gear", "gears", "leverage", "lever", "pulley", "mechanical", "mechanics"
+    ],
+    "reply": "All machines are servants of force. First decide where the force begins and where it must end; then use levers, gears, or pulleys only to change its direction, speed, or strength. Add no wheel or cog that does not clearly earn its place."
     },
     {
-      "id": "structures",
+    "id": "structures",
       "keywords": [
-        "bridge",
-        "tower",
-        "structure",
-        "building",
-        "architecture",
-        "support",
-        "collapse",
-        "stability",
-        "load",
-        "arches"
-      ],
-      "reply": "Every structure must obey balance. If the load is not well distributed, the material will protest and fail. Tell me the span, the supports, and the weight you expect it to carry, and we will reason about its stability."
+      "bridge", "tower", "structure", "building", "architecture", "support", "collapse", "stability", "load", "arches"
+    ],
+    "reply": "A structure endures when its loads find a clear path to the ground. Broad foundations, well-placed supports, and arches that press their weight into the pillars rather than outward are the surest way to prevent collapse."
     },
     {
-      "id": "water",
+    "id": "water",
       "keywords": [
-        "water",
-        "fluid",
-        "river",
-        "flow",
-        "pressure",
-        "canal",
-        "flood",
-        "current"
-      ],
-      "reply": "Water is the most patient engineer: it always finds the weakest point. Describe how it moves in your design — its speed, its level, and where it must be guided or restrained."
-    },
-    {
-      "id": "invention",
+      "water", "fluid", "river", "flow", "pressure", "canal", "flood", "current"
+    ],
+    "reply": "Water always seeks the lowest place by the easiest path. In channels, smooth and narrow passages hasten its speed; wide and rough beds slow it. To control it, you must think in gradients and obstacles, not in commands."
+  },
+  {
+    "id": "invention",
       "keywords": [
-        "flying",
-        "flight",
-        "wings",
-        "machine",
-        "invention",
-        "device",
-        "mechanism",
-        "design",
-        "prototype"
-      ],
-      "reply": "An invention must begin with a clear purpose. What should this device achieve, and by what motion do you imagine it working? Describe its task and how it moves, and we can consider whether nature offers us a model."
-    },
-    {
-      "id": "nature",
+      "flying", "flight", "wings", "machine", "invention", "device", "mechanism", "design", "prototype"
+    ],
+    "reply": "Every invention must answer two questions: what shall it accomplish, and by what motion shall it do so? Begin with the motion—rotation, lifting, sliding, compression—and design the parts only after that choice is clear."
+  },
+  {
+    "id": "nature",
       "keywords": [
-        "nature",
-        "observe",
-        "observation",
-        "study",
-        "landscape",
-        "plants",
-        "animals",
-        "sky",
-        "clouds"
-      ],
-      "reply": "All invention and art begin with careful observation. Nature is the first teacher. Tell me what you have observed, or wish to observe more closely, and we will decide how best to study it."
-    },
-    {
-      "id": "problem",
+      "nature", "observe", "observation", "study", "landscape", "plants", "animals", "sky", "clouds"
+    ],
+    "reply": "Nature is the first teacher. Do not trust memory alone—observe directly, and draw what you see, not what you think ought to be there. The more honestly you look at rocks, plants, clouds, and bodies, the more surely your hand will obey truth instead of habit."
+  },
+  {
+    "id": "problem",
       "keywords": [
-        "problem",
-        "fix",
-        "broken",
-        "doesn't work",
-        "doesnt work",
-        "issue",
-        "trouble",
-        "error"
-      ],
-      "reply": "Then we must diagnose it as we would a machine in disrepair. What was the last state in which it behaved as you wished, and what changed thereafter?"
-    },
-    {
-      "id": "learning",
+      "problem", "fix", "broken", "doesn't work", "doesnt work", "issue", "trouble", "error"
+    ],
+    "reply": "To mend a fault, first recall the last moment when the thing behaved as it should. Between that state and the present one lies the cause. Examine changes one by one instead of all at once; confusion is born from tackling many errors together."
+  },
+  {
+    "id": "learning",
       "keywords": [
-        "learn",
-        "study",
-        "improve",
-        "better",
-        "skill",
-        "practice",
-        "training"
-      ],
-      "reply": "No skill is born complete. My own notebooks are filled with corrections and failed attempts. Tell me which skill you wish to refine — drawing, understanding, invention, or another — and we will break it into smaller exercises."
-    },
-    {
-      "id": "starting",
+      "learn", "study", "improve", "better", "skill", "practice", "training"
+    ],
+    "reply": "No skill is gained by wishing, only by repeated, attentive practice. Work in short, focused sessions on one difficulty at a time—proportion, perspective, shading—until your mistakes grow smaller and more interesting."
+  },
+  {
+    "id": "starting",
       "keywords": [
-        "where do i start",
-        "how do i start",
-        "what should i do",
-        "next step",
-        "first step"
-      ],
-      "reply": "Begin as I would with any work: define the purpose, list the constraints, then sketch the simplest form that might succeed. Tell me these three things, and we shall decide on a clear next step."
-    }
+      "where do i start", "how do i start", "what should i do", "next step", "first step"
+    ],
+    "reply": "When the mind is tangled, begin by writing your goal in one clear sentence. Then list the obstacles that stand before it. The first step is simply the smallest action that moves one obstacle out of your path."
+  }
+
   ],
-  "fallback": "Your question is intriguing. To answer it well, I must know more. Explain whether you speak of art, the human body, a mechanism, or a study of nature — and describe its purpose as precisely as you can."
+  "fallback": "Your words touch on many matters at once. Try asking me one clear question at a time: about a painting, a machine, the human body, a building, or some pattern you see in nature, and I will answer as precisely as I can."
 }
