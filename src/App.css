@@ -1,10 +1,19 @@
 .app {
-  min-height: 90vh;
-  max-height: 90vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  box-sizing: border-box;
   padding: 1rem;
+}
+
+.page {
+  padding: 0 2.5rem;
+  text-align: justify;
+}
+
+.page p {
+  margin-bottom: 1rem;
 }
 
 #myVideo {
@@ -20,7 +29,7 @@
 .chat-shell {
   width: 100%;
   max-width: 900px;
-  height: 73vh;
+  height: 92vh;
   background-color: var(--parchment-soft);
   border: 1px solid var(--sepia-line);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
@@ -225,15 +234,16 @@
   html, body {
       height: 100%;
       margin: 0;
+      padding: 0;
       overflow: hidden;
     }
     
   .chat-shell {
-    height: 75dvh;
+    height: 95dvh;
     max-width: 100%;
     display: flex;
     flex-direction: column;
-    border-radius: 0;
+    border-radius: 12px;
     overflow: hidden;
   }
 
@@ -272,5 +282,14 @@
     font-size: 0.8rem;
     color: var(--ink-dark);
     opacity: 0.9;
+  }
+
+  .page {
+    padding: 0 1.5rem;
+    text-align: justify;
+  }
+  
+  .page p {
+    margin-bottom: 1rem;
   }
 }  

@@ -54,7 +54,7 @@ function App() {
   return (
     <div className="app">
 
-      <video autoPlay muted loop id="myVideo">
+      <video autoPlay muted loop playsInline preload="auto" id="myVideo">
         <source src={background} type="video/mp4" />
       </video>
 
