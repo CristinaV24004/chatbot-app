@@ -13,7 +13,7 @@ import background from "./assets/background.mp4"
 const initialMessages = [
   {
     id: 1,
-    sender: "bot",
+    sender: "assistant",
     text: "Greetings. I am Leonardo da Vinci, engineer and student of nature’s mechanisms. Describe your problem or idea, and we will examine how it might work.",
     timestamp: new Date().toLocaleTimeString(),
   },
@@ -49,7 +49,7 @@ function App() {
         
         const botMessage = {
           id: Date.now() + 1,
-          sender: "bot",
+          sender: "assistant",
           text: replyText,
           timestamp: new Date().toLocaleTimeString(),
         };
@@ -58,7 +58,7 @@ function App() {
         console.error("Error fetching bot reply:", err);
         const errorMessage = {
           id: Date.now() + 1,
-          sender: "bot",
+          sender: "assistant",
           text: "Sorry, I encountered an error. Please try again.",
           timestamp: new Date().toLocaleTimeString(),
         };
