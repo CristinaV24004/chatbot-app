@@ -6,7 +6,6 @@ import History from "./pages/MessageHistory.jsx";
 import About from "./pages/About.jsx";
 import ChatHeader from "./components/chat/ChatHeader.jsx";
 
-import { generateLocalReply } from "./services/leonardoLocal.js";
 import "./App.css";
 
 import background from "./assets/background.mp4"
@@ -38,16 +37,35 @@ function App() {
     setMessages((prev) => [...prev, userMessage]);
     setIsLoading(true);
 
-    setTimeout(() => {
-      const replyText = generateLocalReply(trimmed);
-      const botMessage = {
-        id: Date.now() + 1,
-        sender: "bot",
-        text: replyText,
-        timestamp: new Date().toLocaleTimeString(),
-      };
-      setMessages((prev) => [...prev, botMessage]);
-      setIsLoading(false);
+    setTimeout(async () => {
+      try {
+        const res = await fetch("http://localhost:5000/api/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: trimmed }),
+        });
+        const data = await res.json();
+        const replyText = data?.reply || "No response received";
+        
+        const botMessage = {
+          id: Date.now() + 1,
+          sender: "bot",
+          text: replyText,
+          timestamp: new Date().toLocaleTimeString(),
+        };
+        setMessages((prev) => [...prev, botMessage]);
+      } catch (err) {
+        console.error("Error fetching bot reply:", err);
+        const errorMessage = {
+          id: Date.now() + 1,
+          sender: "bot",
+          text: "Sorry, I encountered an error. Please try again.",
+          timestamp: new Date().toLocaleTimeString(),
+        };
+        setMessages((prev) => [...prev, errorMessage]);
+      } finally {
+        setIsLoading(false);
+      }
     }, 600);
   };
 
