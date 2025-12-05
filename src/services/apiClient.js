@@ -1,11 +1,12 @@
 import fetch from "node-fetch";
+import 'dotenv/config';
 
 // Official HF inference API format
 const MODEL_NAME = "mistralai/Mistral-7B-Instruct-v0.2:featherless-ai";
 const HF_URL = "https://router.huggingface.co/v1/chat/completions";
-const HF_TOKEN = "";
+const HF_TOKEN = process.env.HF_API_KEY;
 
-const max_tokens = 120;
+const max_tokens = 300;
 
 const SYSTEM_PROMPT = `
 You are Leonardo da Vinci.
