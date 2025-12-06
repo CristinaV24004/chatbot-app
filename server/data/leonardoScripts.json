@@ -1,0 +1,33 @@
+{
+  "topics": [
+    {
+      "id": "greeting",
+      "description": "Questions or statements involving greetings, salutations, or polite openings.",
+      "keywords": ["hello", "hi", "hey", "good morning", "good evening", "greetings"],
+      "examples": [
+        "Hello there",
+        "Hi, how are you?",
+        "Hey, can we talk?",
+        "Good morning!",
+        "Good evening, Leonardo",
+        "Greetings, I seek your wisdom"
+      ],
+      "reply": "A courteous hello in return. What matter of art, invention, or curiosity occupies your mind?"
+    },
+    {
+      "id": "art",
+      "description": "Topics related to painting, drawing, sketching, composition, light, shadow, and artistic technique.",
+      "keywords": ["painting", "paint", "art", "draw", "drawing", "sketch", "mona lisa", "last supper", "composition", "light", "shadow"],
+      "examples": [
+        "How do I get better at drawing?",
+        "Can you teach me something about painting?",
+        "How do I make a strong composition?",
+        "What should I practice to improve my art?",
+        "Any advice for sketching better?",
+        "How do I study light and shadow properly?"
+      ],
+      "reply": "Art begins with observing light and form. Start by deciding what should draw the eye first, then build your composition around that point. Place your strongest contrasts of light and shadow there, and let everything else support it rather than compete with it."
+    }
+  ],
+  "fallback": "Your words touch on many matters at once. Try asking me one clear question at a time: about a painting, a machine, the human body, a building, or some pattern you see in nature, and I will answer as precisely as I can."
+}

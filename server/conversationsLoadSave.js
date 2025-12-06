@@ -1,9 +1,9 @@
 import fs from "fs";
 
-function saveConversation(filePath, conversation) {
+export function saveConversation(filePath, conversation) {
     fs.writeFileSync(filePath, JSON.stringify(conversation, null, 2));
 }
 
-function loadConversation(filepath) {
+export function loadConversation(filePath) {
     return JSON.parse(fs.readFileSync(filePath, "utf-8"));
 }

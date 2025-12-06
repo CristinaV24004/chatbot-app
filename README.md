@@ -84,7 +84,7 @@ Classifies user intent and returns a contextual reply.
 ## Configuration
 
 ### Classification Threshold
-Adjust the confidence threshold for intent classification in `src/middleware/server.js`:
+Adjust the confidence threshold for intent classification in `server/index.js`:
 ```javascript
 const threshold = 0.55;  // Range: 0 to 1 (higher = stricter matching)
 ```

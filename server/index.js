@@ -1,7 +1,15 @@
 import express from "express";
 import cors from "cors";
 import classifyIntent, { intents } from "./classifier.js";
-import getAIResponse from "../services/apiClient.js";
+import getAIResponse from "./services/apiClient.js";
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const chatsPath = path.join(__dirname, "data/conversations");
 
 const app = express();
 const port = 5000;
@@ -16,6 +24,14 @@ app.use(cors());
 
 app.get("/", (req, res) => {
     res.json("SERVER UP!");
+});
+
+// Getting chats logic
+app.post("/api/chats", (req, res) => {
+    console.log("Running!");
+    const files = fs.readdirSync(chatsPath);
+    console.log(files);
+    return res.json(files);
 });
 
 app.post("/api/chat", async (req, res) => {

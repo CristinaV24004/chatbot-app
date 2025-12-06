@@ -5,7 +5,7 @@ import embed from "./embedder.js"
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const dataPath = path.join(__dirname, '..', 'data', 'leonardoScripts.json');
+const dataPath = path.join(__dirname, 'data', 'leonardoScripts.json');
 const intents = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
 
 function cosineSimilarity(a, b) {
