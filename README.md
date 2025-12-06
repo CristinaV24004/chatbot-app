@@ -30,6 +30,8 @@ An interactive chatbot application powered by Leonardo da Vinci's wisdom on art,
 
 ## Running the Application
 
+Create **.env** file with HF_API_KEY=YOUR_API_KEY
+
 ### Development Mode
 
 Run both the frontend dev server and backend simultaneously:
