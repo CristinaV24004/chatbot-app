@@ -61,9 +61,11 @@ app.post("/api/chat", async (req, res) => {
         console.log("[OK] Got response");
         fullConversation.push({
             id: Date.now(),
-            role: "assistant",
-            content: aiResponse
+            sender: "assistant",
+            text: aiResponse,
+            timestamp: new Date().toLocaleTimeString(),
         });
+
         return res.json({ reply: aiResponse });
     } catch (err) {
         console.error("[ERROR] Calling AI API did not go well:", err);
