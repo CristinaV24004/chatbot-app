@@ -42,10 +42,10 @@ function App() {
         const res = await fetch("http://localhost:5000/api/chat", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ message: trimmed }),
+          body: JSON.stringify({ message: userMessage }),
         });
         const data = await res.json();
-        const replyText = data?.reply || "No response received";
+        const replyText = data?.reply || "Is backend running? Because it's not replying!";
         
         const botMessage = {
           id: Date.now() + 1,

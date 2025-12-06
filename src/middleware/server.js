@@ -19,13 +19,9 @@ app.get("/", (req, res) => {
 });
 
 app.post("/api/chat", async (req, res) => {
-    const userMessage = req.body.message;
+    const userMessage = req.body.message.text;
 
-    fullConversation.push({
-        id: Date.now(),
-        role: "user",
-        content: userMessage
-    });
+    fullConversation.push(req.body.message);
 
     console.log("Request has been received! Looking for the best match...")
     const { intent, score } = await classifyIntent(userMessage);
@@ -41,8 +37,9 @@ app.post("/api/chat", async (req, res) => {
         if (response) {
             fullConversation.push({
                 id: Date.now(),
-                role: "assistant",
-                content: response
+                sender: "assistant",
+                text: response,
+                timestamp: new Date().toLocaleTimeString(),
             });
             return res.json({ reply: response });
         }
@@ -56,8 +53,8 @@ app.post("/api/chat", async (req, res) => {
         let conversationSlice = fullConversation.slice(-messageCount);
 
         conversationSlice = conversationSlice.map(msg => ({
-            role: msg.role,
-            content: msg.content
+            role: msg.sender,
+            content: msg.text
         }));
 
         const aiResponse = await getAIResponse(conversationSlice, userMessage);
