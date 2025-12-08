@@ -60,8 +60,8 @@ const MessageHistory = () => {
       ) : (
         <ul className="history-list">
           {chats.map((chat, idx) => (
-            <button key={chat.id ?? idx}>
-              {chat.title ?? chat.summary ?? (chat.text ? chat.text.slice(0, 120) : JSON.stringify(chat))}
+            <button key={idx}>
+              {idx ?? chat.summary ?? (chat.text ? chat.text.slice(0, 120) : JSON.stringify(chat))}
             </button>
           ))}
         </ul>

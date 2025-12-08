@@ -1,22 +1,20 @@
 import express from "express";
 import cors from "cors";
-import classifyIntent, { intents } from "./classifier.js";
-import getAIResponse from "./services/apiClient.js";
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+import generateReply from "./chat.js";
+import { appendChat, generateChatID, getChatFullPath, listChats, loadChat } from "./chatSaveLoad.js";
 
-const chatsPath = path.join(__dirname, "data/conversations");
+let currentChatPath = null;
+let currentChatID = null;
 
 const app = express();
 const port = 5000;
 
-// How many last messages get passed into the AI request (for smoother converssation flow)
-const messageCount = 4;
+// How many last messages get passed into the AI request (for smoother converssation flow) 
+// more > longer wait times!!!
+const contextWindowMessages = 4;
 
+let responseObj = null;
 let fullConversation = [];
 
 app.use(express.json());
@@ -26,67 +24,36 @@ app.get("/", (req, res) => {
     res.json("SERVER UP!");
 });
 
+app.post("/api/chat/:id", (res, req) => {
+    fullConversation = loadChat(req.params.id);
+})
+
 // Getting chats logic
 app.post("/api/chats", (req, res) => {
     console.log("Running!");
-    const files = fs.readdirSync(chatsPath);
+    const files = listChats();
     console.log(files);
     return res.json(files);
 });
 
 app.post("/api/chat", async (req, res) => {
-    const userMessage = req.body.message.text;
-
+    const userMessageObj = req.body.message;
+    const userMessageText = req.body.message.text;
     fullConversation.push(req.body.message);
 
-    console.log("Request has been received! Looking for the best match...")
-    const { intent, score } = await classifyIntent(userMessage);
-    console.log(`INTENT: ${intent}, SCORE: ${score}`);
+    // Passing 4 last messages from the chat for context
+    let responseObj = await generateReply(userMessageText, fullConversation.slice(-contextWindowMessages));
+    fullConversation.push(responseObj);
 
-    // TWEAK THIS FOR MORE/LESS PRECISE CLASSIFICATION PRECISION
-    const threshold = 0.65;
-
-    if (intent && score >= threshold) {
-        const topic = intents.topics.find(t => t.id === intent);
-        const response = topic?.reply;
-
-        if (response) {
-            fullConversation.push({
-                id: Date.now(),
-                sender: "assistant",
-                text: response,
-                timestamp: new Date().toLocaleTimeString(),
-            });
-            return res.json({ reply: response });
-        }
+    if (fullConversation.length == 2) {
+        currentChatID = generateChatID();
+        currentChatPath = getChatFullPath(currentChatID);
     }
 
-    console.log("Local classifier did not pass the threshold... Time to abuse AI!");
-    console.log("Sending request");
+    appendChat(currentChatPath, userMessageObj);
+    appendChat(currentChatPath, responseObj);
 
-    // Fallback to AI response
-    try {
-        let conversationSlice = fullConversation.slice(-messageCount);
-
-        conversationSlice = conversationSlice.map(msg => ({
-            role: msg.sender,
-            content: msg.text
-        }));
-
-        const aiResponse = await getAIResponse(conversationSlice, userMessage);
-        console.log("[OK] Got response");
-        fullConversation.push({
-            id: Date.now(),
-            sender: "assistant",
-            text: aiResponse,
-            timestamp: new Date().toLocaleTimeString(),
-        });
-
-        return res.json({ reply: aiResponse });
-    } catch (err) {
-        console.error("[ERROR] Calling AI API did not go well:", err);
-        return res.json({ reply: "Oopsies... Something went completely wrong!" });
-    }
+    return res.json(responseObj);
 })
 
 app.listen(port, () => {
