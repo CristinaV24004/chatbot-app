@@ -24,7 +24,7 @@ function MessageList({ messages, isLoading }) {
 
       {isLoading && (
         <div className="message-row message-row-bot">
-          <div className="bot-message typing-indicator">
+          <div className="bot-message typing-indicator inline">
             <span className="typing-dot"></span>
             <span className="typing-dot"></span>
             <span className="typing-dot"></span>

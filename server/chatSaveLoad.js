@@ -40,7 +40,6 @@ export function appendChat(chatFilePath, messageObj) {
 }
 
 export function listChats() {
-    if (!fs.existsSync(chatsPath)) return [];
     try {
         const files = fs.readdirSync(chatsPath).filter(f => f.endsWith('.json'));
         return files.map(f => path.basename(f, '.json'));

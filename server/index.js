@@ -24,15 +24,16 @@ app.get("/", (req, res) => {
     res.json("SERVER UP!");
 });
 
-app.post("/api/chat/:id", (res, req) => {
-    fullConversation = loadChat(req.params.id);
+app.post("/api/chat/:id", (req, res) => {
+    currentChatID = req.params.id;
+    currentChatPath = getChatFullPath(currentChatID);
+    fullConversation = loadChat(currentChatID);
+    return res.json(fullConversation);
 })
 
 // Getting chats logic
 app.post("/api/chats", (req, res) => {
-    console.log("Running!");
     const files = listChats();
-    console.log(files);
     return res.json(files);
 });
 

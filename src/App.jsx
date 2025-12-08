@@ -89,7 +89,7 @@ function App() {
               />
             }
           />
-          <Route path="/history" element={<History />} />
+          <Route path="/history" element={<History setMessages={setMessages} />} />
           <Route path="/about" element={<About />} />
         </Routes>
       </main>
