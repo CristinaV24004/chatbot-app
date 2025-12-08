@@ -4,8 +4,7 @@ import ChatInput from "../components/chat/ChatInput.jsx";
 
 const Chat = ({ messages, isLoading, handleSendMessage }) => {
   return (
-    <section className="chat-shell" aria-label="Leonardo da Vinci chatbot">
-    
+    <>
       <section
         className="chat-main"
         aria-live="polite"
@@ -16,7 +15,7 @@ const Chat = ({ messages, isLoading, handleSendMessage }) => {
       </section>
 
       <ChatInput onSend={handleSendMessage} disabled={isLoading} />
-    </section>
+    </>
   );
 };
 

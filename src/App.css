@@ -29,8 +29,8 @@
 .chat-shell {
   width: 100%;
   max-width: 900px;
-  height: 92vh;
-  background-color: transparent;
+  height: 96vh;
+  background-color: rgba(248, 242, 230, 0.7);
   border: 1px solid var(--sepia-line);
   border-top-left-radius: 12px;
   border-radius: 12px;
@@ -38,6 +38,13 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
+}
+
+.chat-main {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem 1.5rem;
+  background-color: transparent;
 }
 
 .chat-header {
@@ -86,13 +93,6 @@
   font-size: 0.9rem;
   color: var(--ink-dark);
   opacity: 0.8;
-}
-
-.chat-main {
-  flex: 1;
-  overflow-y: auto;
-  padding: 1rem 1.5rem;
-  background-color: rgba(248, 242, 230, 0.9);
 }
 
 .messages-container {
@@ -292,6 +292,7 @@
   .page {
     padding: 0 1.5rem;
     text-align: justify;
+    overflow-y: auto;
   }
   
   .page p {
@@ -310,6 +311,7 @@
   gap: 1rem;
   margin: 1.5rem 0;
   flex-wrap: wrap;
+  padding: 0 2.5rem;
 }
 
 .btn {
