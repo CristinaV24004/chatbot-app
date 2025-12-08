@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Chat from "./pages/Chat.jsx";
@@ -22,6 +22,8 @@ const initialMessages = [
 function App() {
   const [messages, setMessages] = useState(initialMessages);
   const [isLoading, setIsLoading] = useState(false);
+  const [isBotTyping, setIsBotTyping] = useState(false);
+  const [serverStatus, setServerStatus] = useState("idle");
 
   const handleSendMessage = (text) => {
     const trimmed = text.trim();
@@ -36,7 +38,7 @@ function App() {
 
     setMessages((prev) => [...prev, userMessage]);
     setIsLoading(true);
-
+    setIsBotTyping(true);
     setTimeout(async () => {
       try {
         const res = await fetch("http://localhost:5000/api/chat", {
@@ -45,7 +47,7 @@ function App() {
           body: JSON.stringify({ message: userMessage }),
         });
         const data = await res.json();
-        const replyText = data?.text || "Is backend running? Because it's not replying!";
+        const replyText = data?.text || "The device that conveys our messages seems to have ceased its motion. I receive no response.";
         
         const botMessage = {
           id: Date.now() + 1,
@@ -56,15 +58,18 @@ function App() {
         setMessages((prev) => [...prev, botMessage]);
       } catch (err) {
         console.error("Error fetching bot reply:", err);
+        setServerStatus("error");
+
         const errorMessage = {
           id: Date.now() + 1,
           sender: "assistant",
-          text: "Sorry, I encountered an error. Please try again.",
+          text: "It seems our connection is disrupted, like a broken gear. Try your question once more.",
           timestamp: new Date().toLocaleTimeString(),
         };
         setMessages((prev) => [...prev, errorMessage]);
       } finally {
         setIsLoading(false);
+        setIsBotTyping(false);
       }
     }, 600);
   };
@@ -85,6 +90,8 @@ function App() {
               <Chat
                 messages={messages}
                 isLoading={isLoading}
+                isBotTyping={isBotTyping}      
+                serverStatus={serverStatus} 
                 handleSendMessage={handleSendMessage}
               />
             }

@@ -2,16 +2,22 @@
 import MessageList from "../components/chat/MessageList.jsx";
 import ChatInput from "../components/chat/ChatInput.jsx";
 
-const Chat = ({ messages, isLoading, handleSendMessage }) => {
+const Chat = ({ 
+  messages, 
+  isLoading, 
+  isBotTyping,
+  handleSendMessage,
+ }) => {
+
   return (
     <>
-      <section
+        <section
         className="chat-main"
         aria-live="polite"
         aria-label="Chat messages"
         role="log"
       >
-        <MessageList messages={messages} isLoading={isLoading} />
+        <MessageList messages={messages} isLoading={isLoading} isBotTyping={isBotTyping}/>
       </section>
 
       <ChatInput onSend={handleSendMessage} disabled={isLoading} />

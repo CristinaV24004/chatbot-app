@@ -17,6 +17,15 @@ const Navbar = () => {
         </NavLink>
 
         <NavLink
+          to="/history"
+          className={({ isActive }) =>
+            isActive ? "nav-link nav-link--active" : "nav-link"
+          }
+        >
+          Previous Conversations
+        </NavLink>
+
+        <NavLink
           to="/about"
           className={({ isActive }) =>
             isActive ? "nav-link nav-link--active" : "nav-link"
@@ -25,14 +34,6 @@ const Navbar = () => {
           About
         </NavLink>
 
-        <NavLink
-          to="/history"
-          className={({ isActive }) =>
-            isActive ? "nav-link nav-link--active" : "nav-link"
-          }
-        >
-          Message History
-        </NavLink>
       </div>
     </nav>
   );

@@ -62,7 +62,7 @@ button {
   color: var(--parchment-light);
   font-family: var(--font-body);
   border: none;
-  padding: 0.6rem 1rem;
+  padding: 0.4rem 0.8rem;
   border-radius: 6px;
   cursor: pointer;
   transition: 0.2s ease;
@@ -83,18 +83,27 @@ input, textarea {
 
 .user-message {
   background-color: var(--bubble-user);
-  border: 1px solid var(--sepia-line);
+  border: 1px solid rgba(90, 70, 40, 0.35);
   color: var(--ink-dark);
-  padding: 0.5rem 0.8rem;
-  border-radius: 6px;
-  margin: 0.4rem 0;
+  padding: 0.6rem 0.9rem;
+  border-radius: 16px 16px 4px 16px;
+  margin: 0.35rem 0;
+  max-width: 75%;
+  line-height: 1.4;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
 }
 
 .bot-message {
   background-color: var(--bubble-daVinci);
-  border: 1px solid var(--sepia-line);
+  border: 1px solid rgba(110, 85, 50, 0.45);
   color: var(--ink-dark);
-  padding: 0.5rem 0.8rem;
-  border-radius: 6px;
-  margin: 0.4rem 0;
+  padding: 0.65rem 1rem;
+  border-radius: 16px 4px 16px 16px;
+  margin: 0.35rem 0;
+  max-width: 75%;
+  font-size: 1.05rem;
+  line-height: 1.55;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16);
+  font-family: var(--font-header);
+  font-weight: 400;
 }

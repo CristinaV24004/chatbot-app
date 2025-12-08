@@ -81,7 +81,7 @@ const MessageHistory = ({ setMessages }) => {
   return (
     <div className="page">
       <h1>Message History</h1>
-      <p>Here you’ll see previous conversations or saved sessions.</p>
+      <p>Start a chat, and your past questions will appear here like pages in a sketchbook.</p>
 
       {loading ? (
         <p>Loading...</p>
