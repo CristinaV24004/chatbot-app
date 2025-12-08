@@ -12,9 +12,9 @@ function ChatHeader() {
         />
 
         <div className="chat-title-block">
-          <h1>Historical AI Chatbot: Leonardo da Vinci</h1>
+          <h1>Leonardo da Vinci</h1>
           <p className="chat-subtitle">
-            Renaissance polymath • Painter • Inventor • Forever curious about your questions
+            Renaissance polymath • Painter • Inventor
           </p>
         </div>
       </div>
