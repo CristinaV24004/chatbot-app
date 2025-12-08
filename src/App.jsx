@@ -45,7 +45,7 @@ function App() {
           body: JSON.stringify({ message: userMessage }),
         });
         const data = await res.json();
-        const replyText = data?.reply || "Is backend running? Because it's not replying!";
+        const replyText = data?.text || "Is backend running? Because it's not replying!";
         
         const botMessage = {
           id: Date.now() + 1,
@@ -89,7 +89,7 @@ function App() {
               />
             }
           />
-          <Route path="/history" element={<History />} />
+          <Route path="/history" element={<History setMessages={setMessages} />} />
           <Route path="/about" element={<About />} />
         </Routes>
       </main>

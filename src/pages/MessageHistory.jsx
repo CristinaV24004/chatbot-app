@@ -1,19 +1,51 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const MessageHistory = () => {
+const MessageHistory = ({ setMessages }) => {
   const [chats, setChats] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
+  // Handler for loading a saved chat
+  const handleChatLoad = (chatId) => async () => {
+    if (!chatId || !setMessages) return;
+
+    try {
+      const res = await fetch(`http://localhost:5000/api/chat/${chatId}`,
+        {
+          method: "POST",
+          headers: { 
+            "Content-Type": "application/json",
+          }
+        }
+      );
+      if (!res.ok) {
+        console.error(`[ERROR] Failed to load chat ${chatId}:`, res.status);
+        return;
+      }
+
+      const chatMessages = await res.json();
+      console.log(`[OK] Loaded chat ${chatId}:`, chatMessages);
+      // Update parent App's messages state
+      setMessages(chatMessages);
+      // navigate back to the chat page
+      navigate("/", { replace: true });
+    } catch (err) {
+      console.error(`[ERROR] Failed to load chat ${chatId}:`, err);
+    }
+  };
+
+  
   useEffect(() => {
     let mounted = true;
 
     async function loadChats() {
       try {
-        const res = await fetch("http://localhost:5000/api/chats", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" }
-        });
+      const res = await fetch("http://localhost:5000/api/chats", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" }
+      });
 
         const data = await res.json().catch(() => null);
 
@@ -59,10 +91,12 @@ const MessageHistory = () => {
         <p>No saved conversations yet.</p>
       ) : (
         <ul className="history-list">
-          {chats.map((chat, idx) => (
-            <button key={chat.id ?? idx}>
-              {chat.title ?? chat.summary ?? (chat.text ? chat.text.slice(0, 120) : JSON.stringify(chat))}
-            </button>
+          {chats.map((chatId) => (
+            <li key={chatId}>
+              <button onClick={handleChatLoad(chatId)}>
+                Chat: {chatId}
+              </button>
+            </li>
           ))}
         </ul>
       )}
