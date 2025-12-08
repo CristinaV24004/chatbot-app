@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const MessageHistory = ({ setMessages }) => {
   const [chats, setChats] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   // Handler for loading a saved chat
   const handleChatLoad = (chatId) => async () => {
@@ -13,7 +15,9 @@ const MessageHistory = ({ setMessages }) => {
       const res = await fetch(`http://localhost:5000/api/chat/${chatId}`,
         {
           method: "POST",
-          headers: { "Content-Type": "application/json" }
+          headers: { 
+            "Content-Type": "application/json",
+          }
         }
       );
       if (!res.ok) {
@@ -23,9 +27,10 @@ const MessageHistory = ({ setMessages }) => {
 
       const chatMessages = await res.json();
       console.log(`[OK] Loaded chat ${chatId}:`, chatMessages);
-
       // Update parent App's messages state
       setMessages(chatMessages);
+      // navigate back to the chat page
+      navigate("/", { replace: true });
     } catch (err) {
       console.error(`[ERROR] Failed to load chat ${chatId}:`, err);
     }
