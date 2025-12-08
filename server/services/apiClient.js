@@ -39,7 +39,7 @@ async function getAIResponse(conversationHistory, userPrompt) {
         messages: messages,
         model: MODEL_NAME,
         max_tokens: max_tokens,
-        temperature: 0.6,
+        temperature: 0.5,
         top_p: 0.9
     };
 
