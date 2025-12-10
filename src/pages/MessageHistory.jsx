@@ -91,12 +91,10 @@ const MessageHistory = ({ setMessages }) => {
         <p>No saved conversations yet.</p>
       ) : (
         <ul className="history-list">
-          {chats.map((chatId) => (
-            <li key={chatId}>
-              <button onClick={handleChatLoad(chatId)}>
-                Chat: {chatId}
+          {chats.map((idx, chatId) => (
+              <button key={chatId} onClick={handleChatLoad(chatId)}>
+                Chat: {idx}
               </button>
-            </li>
           ))}
         </ul>
       )}

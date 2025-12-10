@@ -29,7 +29,7 @@
 .chat-shell {
   width: 100%;
   max-width: 900px;
-  height: 96vh;
+  height: 94vh;
   background-color: rgba(248, 242, 230, 0.7);
   border: 1px solid var(--sepia-line);
   border-top-left-radius: 12px;
@@ -70,8 +70,8 @@
 }
 
 .chat-avatar {
-  width: 56px;
-  height: 56px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid var(--sepia-line);

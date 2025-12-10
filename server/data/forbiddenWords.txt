@@ -1,0 +1,10 @@
+phone
+ai
+computer
+smartphone
+microwave
+helicopter
+plane
+car
+train
+internet

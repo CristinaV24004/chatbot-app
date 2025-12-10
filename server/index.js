@@ -1,8 +1,11 @@
 import express from "express";
 import cors from "cors";
 
+import superlog from "./beautifulLogs.js";
+
 import generateReply from "./chat.js";
 import { appendChat, generateChatID, getChatFullPath, listChats, loadChat } from "./chatSaveLoad.js";
+import { initClassifierCache } from "./classifier.js";
 
 let currentChatPath = null;
 let currentChatID = null;
@@ -60,5 +63,8 @@ app.post("/api/chat", async (req, res) => {
 })
 
 app.listen(port, () => {
-    console.log(`Server is up and runnin' on port ${port}`);
+    superlog("OK", `Server is up and runnin' on port ${port}`);
+    superlog("LOAD", "Precaching classification embeddings...");
+    initClassifierCache();
+    superlog("OK", "Precaching done!");
 });

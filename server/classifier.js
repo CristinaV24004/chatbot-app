@@ -8,6 +8,20 @@ const __dirname = path.dirname(__filename);
 const dataPath = path.join(__dirname, 'data', 'leonardoScripts.json');
 const intents = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
 
+const cachedEmbeddings = [];
+
+// CHECK!!!
+export async function initClassifierCache() {
+    for (let topic of intents.topics) {
+        let topicEmbeddings = [];
+        for (let example of topic.examples) {
+            const exampleVec = await embed(example.toLowerCase());
+            topicEmbeddings.push(exampleVec);
+        }
+        cachedEmbeddings.push({"topicID": topic, "embeddings": topicEmbeddings});
+    }
+}
+
 function cosineSimilarity(a, b) {
     let dot = 0, normA = 0, normB = 0;
     for (let i=0; i<a.length; i++) {
