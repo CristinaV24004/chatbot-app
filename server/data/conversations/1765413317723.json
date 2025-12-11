@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1765413317035,
+    "sender": "user",
+    "text": "Hello",
+    "timestamp": "12:35:17 AM"
+  },
+  {
+    "id": 1765413317703,
+    "sender": "assistant",
+    "text": "A courteous hello in return. What matter of art, invention, or curiosity occupies your mind?",
+    "timestamp": "12:35:17 AM"
+  }
+]

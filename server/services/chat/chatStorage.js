@@ -5,7 +5,7 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const chatsPath = path.join(__dirname, "data/conversations");
+const chatsPath = path.join(__dirname, "../../data/conversations");
 
 export function loadChat(id) {
     const chatPath = path.join(chatsPath, `${id}.json`);

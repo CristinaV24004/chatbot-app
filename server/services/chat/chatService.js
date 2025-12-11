@@ -1,8 +1,7 @@
-import { response } from "express";
-import classifyIntent, { intents } from "./classifier.js";
-import getAIResponse from "./services/apiClient.js";
-import validateResponse from "./services/responseValidator.js";
-import superlog from "./beautifulLogs.js";
+import classifyIntent, { intents } from "./classifierService.js";
+import getAIResponse from "../api/apiClient.js";
+import validateResponse from "../validation/responseValidator.js";
+import superlog from "../../utils/beautifulLogs.js";
 
 const fallbackReply = `
 I am terribly sorry, I cannot provide an answer to your question.

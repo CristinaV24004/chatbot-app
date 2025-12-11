@@ -1,16 +1,15 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import embed from "./embedder.js"
+import embed from "./embedderService.js"
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const dataPath = path.join(__dirname, 'data', 'leonardoScripts.json');
+const dataPath = path.join(__dirname, '..', '..', 'data', 'leonardoScripts.json');
 const intents = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
 
 const cachedEmbeddings = [];
 
-// CHECK!!!
 export async function initClassifierCache() {
     for (let topic of intents.topics) {
         let topicEmbeddings = [];

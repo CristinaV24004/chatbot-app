@@ -24,6 +24,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [isBotTyping, setIsBotTyping] = useState(false);
   const [serverStatus, setServerStatus] = useState("idle");
+  const [chatID, setChatID] = useState(null);
 
   const handleSendMessage = (text) => {
     const trimmed = text.trim();
@@ -44,11 +45,18 @@ function App() {
         const res = await fetch("http://localhost:5000/api/chat", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ message: userMessage }),
+          body: JSON.stringify({
+              message: userMessage, 
+              chatID: chatID
+            }),
         });
         const data = await res.json();
-        const replyText = data?.text || "The device that conveys our messages seems to have ceased its motion. I receive no response.";
+        const replyText = data?.reply?.text || "The device that conveys our messages seems to have ceased its motion. I receive no response.";
         
+        if (!chatID && data.chatID) {
+          setChatID(data.chatID);
+        }
+
         const botMessage = {
           id: Date.now() + 1,
           sender: "assistant",

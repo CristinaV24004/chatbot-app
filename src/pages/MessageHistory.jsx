@@ -14,7 +14,7 @@ const MessageHistory = ({ setMessages }) => {
     try {
       const res = await fetch(`http://localhost:5000/api/chat/${chatId}`,
         {
-          method: "POST",
+          method: "GET",
           headers: { 
             "Content-Type": "application/json",
           }
@@ -43,7 +43,7 @@ const MessageHistory = ({ setMessages }) => {
     async function loadChats() {
       try {
       const res = await fetch("http://localhost:5000/api/chats", {
-        method: "POST",
+        method: "GET",
         headers: { "Content-Type": "application/json" }
       });
 
@@ -91,7 +91,7 @@ const MessageHistory = ({ setMessages }) => {
         <p>No saved conversations yet.</p>
       ) : (
         <ul className="history-list">
-          {chats.map((idx, chatId) => (
+          {chats.map((chatId, idx) => (
               <button key={chatId} onClick={handleChatLoad(chatId)}>
                 Chat: {idx}
               </button>
