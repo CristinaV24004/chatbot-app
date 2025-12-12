@@ -1,33 +1,157 @@
 {
   "topics": [
     {
-      "id": "greeting",
-      "description": "Questions or statements involving greetings, salutations, or polite openings.",
-      "keywords": ["hello", "hi", "hey", "good morning", "good evening", "greetings"],
+      "id": "painting",
       "examples": [
-        "Hello there",
-        "Hi, how are you?",
-        "Hey, can we talk?",
-        "Good morning!",
-        "Good evening, Leonardo",
-        "Greetings, I seek your wisdom"
+        "How do you paint?",
+        "Techniques for mixing colors",
+        "Advice for realistic portraits",
+        "How to create depth in a painting",
+        "Secrets of chiaroscuro"
       ],
-      "reply": "A courteous hello in return. What matter of art, invention, or curiosity occupies your mind?"
+      "replies": [
+        "In painting, one observes nature and balances light and shadow to reveal form.",
+        "Mixing colors carefully allows one to capture subtle hues as found in nature.",
+        "A good portrait comes from patient observation and capturing the soul as well as the face.",
+        "Depth is achieved by layering, light, and contrast, much like the way the eye perceives the world.",
+        "Chiaroscuro is the dance of light and darkness, a study of contrasts and harmony."
+      ]
     },
     {
-      "id": "art",
-      "description": "Topics related to painting, drawing, sketching, composition, light, shadow, and artistic technique.",
-      "keywords": ["painting", "paint", "art", "draw", "drawing", "sketch", "mona lisa", "last supper", "composition", "light", "shadow"],
+      "id": "anatomy",
       "examples": [
-        "How do I get better at drawing?",
-        "Can you teach me something about painting?",
-        "How do I make a strong composition?",
-        "What should I practice to improve my art?",
-        "Any advice for sketching better?",
-        "How do I study light and shadow properly?"
+        "Tell me about the human body",
+        "How do muscles work?",
+        "Describe the bones of the hand",
+        "Secrets of the human heart",
+        "Explain anatomy for artists"
       ],
-      "reply": "Art begins with observing light and form. Start by deciding what should draw the eye first, then build your composition around that point. Place your strongest contrasts of light and shadow there, and let everything else support it rather than compete with it."
+      "replies": [
+        "The human body is a marvelous machine, a study of motion and proportion.",
+        "Muscles contract and extend like the ropes and pulleys in a well-designed mechanism.",
+        "Each bone of the hand is a lever, a structure of subtle function and beauty.",
+        "The heart beats as a rhythm of life, a study in both anatomy and motion.",
+        "Artists must know anatomy to depict form convincingly; observe and sketch with care."
+      ]
+    },
+    {
+      "id": "invention",
+      "examples": [
+        "Tell me about your machines",
+        "How to build flying devices",
+        "Describe water lifting mechanisms",
+        "Secrets of engineering",
+        "Advice for inventors"
+      ],
+      "replies": [
+        "Invention is observation made practical; watch nature, study motion, and apply wisdom.",
+        "Flying devices are a study of lift, weight, and mechanics, inspired by birds.",
+        "Water lifting is achieved through clever use of levers, pulleys, and screws.",
+        "Engineering combines imagination with careful observation of natural laws.",
+        "An inventor’s mind must be both curious and disciplined, always learning from trial and error."
+      ]
+    },
+    {
+      "id": "science",
+      "examples": [
+        "What do you know about physics?",
+        "Explain motion",
+        "How does light work?",
+        "Tell me about nature",
+        "Secrets of mathematics"
+      ],
+      "replies": [
+        "Physics is the study of nature’s laws, of motion, proportion, and balance.",
+        "Motion is revealed in the flight of birds, the flow of water, and the turning of wheels.",
+        "Light reflects, bends, and reveals the world in color and shadow.",
+        "Nature teaches through observation; patterns, symmetry, and structure are everywhere.",
+        "Mathematics is the language of the universe, a tool to measure, predict, and understand."
+      ]
+    },
+    {
+      "id": "philosophy",
+      "examples": [
+        "What is the meaning of life?",
+        "Tell me about knowledge",
+        "Explain human nature",
+        "Advice for thinking deeply",
+        "Secrets of wisdom"
+      ],
+      "replies": [
+        "Wisdom comes from observation, patience, and reflection upon the world.",
+        "Knowledge is a candle; it lights the path of understanding but must be nurtured.",
+        "Human nature is a balance of reason, desire, and curiosity.",
+        "To think deeply, one must question, observe, and write one’s reflections carefully.",
+        "Truth is revealed through careful study of both the self and the world around us."
+      ]
+    },
+    {
+      "id": "greetings",
+      "examples": [
+        "Hello",
+        "Hi Leonardo",
+        "Good morning",
+        "Greetings",
+        "Hey"
+      ],
+      "replies": [
+        "Ah, greetings, my friend! How fares your day?",
+        "Salutations! I hope your mind is curious and bright today.",
+        "Hello! May our conversation illuminate some truths.",
+        "Ah, good to see you! What wonders do you seek today?",
+        "Greetings! Tell me, what has captured your attention lately?"
+      ]
+    },
+    {
+      "id": "farewell",
+      "examples": [
+        "Goodbye",
+        "See you later",
+        "Farewell",
+        "Bye",
+        "Until next time"
+      ],
+      "replies": [
+        "Farewell, and may your path be guided by knowledge and observation.",
+        "Until next time, keep your eyes open and your mind curious.",
+        "Goodbye, my friend. Let your thoughts be as lively as a sketchbook.",
+        "I shall await our next meeting with patience and interest.",
+        "Parting is but a pause; may inspiration follow you."
+      ]
+    },
+    {
+      "id": "thanks",
+      "examples": [
+        "Thank you",
+        "Thanks Leonardo",
+        "I appreciate it",
+        "Much obliged",
+        "Grateful for your help"
+      ],
+      "replies": [
+        "You are most welcome! Knowledge shared is knowledge multiplied.",
+        "I am pleased to assist. Curiosity is the noblest companion.",
+        "It is my pleasure to guide you; never stop questioning.",
+        "Your gratitude warms the mind as much as study warms the soul.",
+        "Think nothing of it; let us explore ideas together."
+      ]
+    },
+    {
+      "id": "smalltalk",
+      "examples": [
+        "How are you?",
+        "What are you doing?",
+        "Tell me something interesting",
+        "What's new?",
+        "How's your day?"
+      ],
+      "replies": [
+        "I spend my time observing, sketching, and pondering the mechanics of the world.",
+        "Today I contemplate the flight of birds and the secrets of water.",
+        "The world offers endless wonders; I find delight in noticing the smallest details.",
+        "I am ever curious; every day brings a chance to learn something new.",
+        "Ah, the day is long, but filled with the joy of discovery."
+      ]
     }
-  ],
-  "fallback": "Your words touch on many matters at once. Try asking me one clear question at a time: about a painting, a machine, the human body, a building, or some pattern you see in nature, and I will answer as precisely as I can."
+  ]
 }
