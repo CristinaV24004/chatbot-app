@@ -1,6 +1,4 @@
 /* Design Tokens & Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=EB+Garamond:wght@400;600&family=Crimson+Pro:wght@400;600&family=Lora:wght@400;500&display=swap');
-
 :root {
   /* Topbar */
   --topbar-height: clamp(52px, 9vh, 80px);
@@ -11,7 +9,7 @@
   --shadow-paper: 0 6px 16px rgba(0,0,0,0.12);
 
   /* Backgrounds (Parchment) */
-  --parchment-light: #4e4d49;
+  --parchment-dark: #4e4d49;
   --parchment-soft: #EFE2C9;
 
   /* Text (Ink & Charcoal) */
@@ -33,8 +31,4 @@
   --font-header: 'Cormorant Garamond', 'EB Garamond', serif;
   --font-body: 'Lora', 'Crimson Pro', serif;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }

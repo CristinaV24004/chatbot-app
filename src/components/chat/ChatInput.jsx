@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 
+// Automatically return focus to the input when it becomes enabled
 function ChatInput({ onSend, disabled }) {
   const [text, setText] = useState("");
   const inputRef = useRef(null);
@@ -10,6 +11,7 @@ function ChatInput({ onSend, disabled }) {
     }
   }, [disabled]);
 
+// Handles message submission and prevents empty messages  
   const handleSubmit = (e) => {
     e.preventDefault();
     const trimmed = text.trim();

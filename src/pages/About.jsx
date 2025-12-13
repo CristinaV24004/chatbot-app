@@ -1,5 +1,4 @@
-import React from "react";
-
+// Static page describing the project and its purpose
 const About = () => {
   return (
     <div className="page">

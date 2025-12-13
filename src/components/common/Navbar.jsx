@@ -1,11 +1,12 @@
-import React from "react";
 import { NavLink } from "react-router-dom";
 
+// Main navigation for chat, history, and about pages
 const Navbar = () => {
   return (
     <nav className="navbar">
 
       <div className="navbar-links">
+      {/* Apply active styling based on the current route */}
         <NavLink
           to="/"
           end

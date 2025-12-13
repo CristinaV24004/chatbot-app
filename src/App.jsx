@@ -8,7 +8,7 @@ import BottomNav from "./components/layout/TopBar.jsx";
 
 import background from "./assets/background.mp4";
 
-// Configuration
+// Local dev API endpoint (backend)
 const API_URL = "http://localhost:5000/api/chat";
 const MESSAGE_SEND_DELAY = 600; // ms delay before sending to bot
 const TIMESTAMP_OFFSET = 1; // unique ID offset for bot messages
@@ -25,7 +25,7 @@ const ERROR_MESSAGES = {
   noResponse: "The device that conveys our messages seems to have ceased its motion. I receive no response.",
 };
 
-//Creates a message object with consistent structure
+// Create a message object with a unique ID (offset used to avoid clashes between user/bot IDs)
 const createMessage = (text, sender, timestamp = new Date().toLocaleTimeString()) => ({
   id: Date.now() + (sender === "assistant" ? TIMESTAMP_OFFSET : 0),
   sender,
@@ -51,6 +51,7 @@ function App() {
     setTimeout(() => sendMessageToBot(userMessage), MESSAGE_SEND_DELAY);
   };
 
+  // Send user message to backend and append assistant reply
   const sendMessageToBot = async (userMessage) => {
     try {
       const res = await fetch(API_URL, {
@@ -87,8 +88,6 @@ function App() {
         <source src={background} type="video/mp4" />
       </video>
 
-      
-      {/* Stack layers behind chat shell */}
       <div className="stack-layer stack-layer-1"></div>
       <div className="stack-layer stack-layer-2"></div>
       
@@ -99,6 +98,7 @@ function App() {
             element={
               <Chat
                 messages={messages}
+                isLoading={isBotTyping}
                 isBotTyping={isBotTyping}
                 handleSendMessage={handleSendMessage}
               />

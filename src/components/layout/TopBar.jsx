@@ -1,6 +1,7 @@
 import ChatHeader from "../chat/ChatHeader.jsx";
 import Navbar from "../common/Navbar.jsx";
 
+// Fixed bottom navigation container combining chat header and main navigation
 const BottomNav = () => {
   return (
     <footer className="bottom-nav">

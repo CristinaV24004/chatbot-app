@@ -5,6 +5,7 @@ function MessageList({ messages, isLoading, isBotTyping }) {
 
   const endRef = useRef(null);
 
+// Automatically scroll to the latest message or typing indicator  
   useEffect(() => {
     if (endRef.current) {
       endRef.current.scrollIntoView({ behavior: "smooth" });
@@ -22,6 +23,7 @@ function MessageList({ messages, isLoading, isBotTyping }) {
         />
       ))}
 
+    {/* Show a temporary typing indicator while the bot is generating a response */}
       {isBotTyping && (
         <div className="message-row message-row-bot">
           <div className="bot-message typing-text">

@@ -36,15 +36,15 @@ const MessageHistory = ({ setMessages }) => {
     }
   };
 
-  
+  // Fetch saved chat IDs on mount and handle different response shapes safely  
   useEffect(() => {
     let mounted = true;
 
     async function loadChats() {
       try {
-      const res = await fetch("http://localhost:5000/api/chats", {
-        method: "GET",
-        headers: { "Content-Type": "application/json" }
+        const res = await fetch("http://localhost:5000/api/chats", {
+          method: "GET",
+          headers: { "Content-Type": "application/json" }
       });
 
         const data = await res.json().catch(() => null);
@@ -92,9 +92,11 @@ const MessageHistory = ({ setMessages }) => {
       ) : (
         <ul className="history-list">
           {chats.map((chatId, idx) => (
-              <button key={chatId} onClick={handleChatLoad(chatId)}>
-                Chat: {idx}
+            <li key={chatId}>
+              <button onClick={handleChatLoad(chatId)}>
+                Chat: {idx + 1}
               </button>
+            </li>
           ))}
         </ul>
       )}

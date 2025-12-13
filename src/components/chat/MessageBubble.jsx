@@ -1,4 +1,5 @@
 function MessageBubble({ sender, text, timestamp }) {
+// Determine message layout and styling based on sender  
   const isUser = sender === "user";
 
   return (

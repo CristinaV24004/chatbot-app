@@ -1,15 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=EB+Garamond:wght@400;600&family=Crimson+Pro:wght@400;600&family=Lora:wght@400;500&display=swap');
+
 /* Reset + Base */
-*, *::before, *::after { box-sizing: border-box; }
-html, body { height: 100%; margin: 0; padding: 0; }
+*, *::before, *::after { 
+  box-sizing: border-box; 
+}
+
+html, body { 
+  height: 100%; 
+  margin: 0; 
+  padding: 0; 
+}
+
+html {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 body {
-  background-color: var(--parchment-light);
+  background-color: var(--parchment-dark);
   color: var(--ink-dark);
   font-family: var(--font-body);
   line-height: 1.6;
   overflow: hidden;
 }
 
-h1, h2, h3, h4 { font-family: var(--font-header); color: var(--ink-charcoal); margin-top: 0; }
+h1, h2, h3, h4 { 
+  font-family: var(--font-header); 
+  color: var(--ink-charcoal); 
+  margin-top: 0; 
+}
+
 button {
   background-color: var(--ink-action);
   color: #F5E6D3;
@@ -20,7 +42,12 @@ button {
   cursor: pointer;
   transition: 0.2s ease;
 }
-button:hover { background-color: #4a3c25; color: #FFF8F0; }
+
+button:hover { 
+  background-color: #4a3c25; 
+  color: #FFF8F0; 
+}
+
 input, textarea {
   background-color: var(--parchment-soft);
   border: 1px solid var(--sepia-line);
@@ -28,6 +55,22 @@ input, textarea {
   font-family: var(--font-body);
   color: var(--ink-dark);
   border-radius: 4px;
+}
+
+.visually-hidden {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+
+  padding: 0;
+  margin: -1px;
+
+  overflow: hidden;
+  white-space: nowrap;
+
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
 
 .app {
@@ -40,7 +83,7 @@ input, textarea {
 }
 
 #myVideo {
-  opacity: 75%;
+  opacity: 0.75;
   z-index: -1;
   position: fixed;
   left: 0; top: 0;

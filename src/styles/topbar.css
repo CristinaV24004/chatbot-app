@@ -12,6 +12,7 @@
   min-height: var(--topbar-height);
   overflow: clip;
 }
+
 .bottom-nav-inner {
   max-width: var(--container-width);
   margin: 0 auto;
@@ -21,9 +22,19 @@
   justify-content: space-between;
   gap: 0.6rem;
 }
-.bottom-nav-left .chat-header-inner { justify-content: flex-start; }
-.bottom-nav-left { display: flex; align-items: center; }
-.bottom-nav-right { display: flex; align-items: center; }
+.bottom-nav-left .chat-header-inner { 
+  justify-content: flex-start; 
+}
+
+.bottom-nav-left { 
+  display: flex; 
+  align-items: center; 
+}
+
+.bottom-nav-right { 
+  display: flex; 
+  align-items: center; 
+}
 
 .chat-header-inner {
   display: flex;
@@ -40,13 +51,37 @@
   border: 2px solid var(--sepia-line);
   box-shadow: 0 2px 6px rgba(0,0,0,0.25);
 }
-.chat-title-block h1 { font-size: clamp(1.05rem, 2vw, 1.35rem); margin-bottom: 0.08rem; }
-.chat-title-block { text-align: left; }
-.chat-subtitle { margin: 0; font-size: clamp(0.72rem, 1.5vw, 0.85rem); color: var(--ink-dark); opacity: 0.85; }
+.chat-title-block h1 { 
+  font-size: clamp(1.05rem, 2vw, 1.35rem); 
+  margin-bottom: 0.08rem; 
+}
+
+.chat-title-block { 
+  text-align: left; 
+}
+
+.chat-subtitle { 
+  margin: 0; 
+  font-size: clamp(0.72rem, 1.5vw, 0.85rem); 
+  color: var(--ink-dark); 
+  opacity: 0.85; 
+}
 
 /* Navbar */
-.navbar { border: none; padding: 0; margin: 0; background: transparent; }
-.navbar-links { display: flex; justify-content: flex-end; align-items: center; gap: 0.85rem; }
+.navbar { 
+  border: none; 
+  padding: 0; 
+  margin: 0; 
+  background: transparent; 
+}
+
+.navbar-links { 
+  display: flex; 
+  justify-content: flex-end; 
+  align-items: center; 
+  gap: 0.85rem; 
+}
+
 .nav-link {
   display: inline-flex;
   align-items: center;
@@ -62,8 +97,17 @@
   border: 1px solid rgba(119,95,58,0.15);
   transition: all 0.25s ease;
 }
-.nav-link:hover { background-color: rgba(0,0,0,0.18); border: 1px solid rgba(119,95,58,0.3); }
-.nav-link--active { border-bottom: 2px solid var(--ink-dark); font-weight: 750; transform: translateY(-1px); }
+
+.nav-link:hover { 
+  background-color: rgba(0,0,0,0.18); 
+  border: 1px solid rgba(119,95,58,0.3); 
+}
+
+.nav-link--active { 
+  border-bottom: 2px solid var(--ink-dark); 
+  font-weight: 750; 
+  transform: translateY(-1px); 
+}
 
 .nav-icon {
   width: 22px;

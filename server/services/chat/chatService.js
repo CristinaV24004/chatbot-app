@@ -9,7 +9,6 @@ import validateResponse from "../validation/responseValidator.js";
 
 // Custom logger utility
 import superlog from "../../utils/beautifulLogs.js";
-import { getRandomValues } from "crypto";
 
 // Fallback reply when no suitable response is found
 const fallbackReply = `

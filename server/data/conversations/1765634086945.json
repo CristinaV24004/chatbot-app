@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1765634086033,
+    "sender": "user",
+    "text": "hi",
+    "timestamp": "13:54:46"
+  },
+  {
+    "id": 1765634086919,
+    "sender": "assistant",
+    "text": "Ah, good to see you! What wonders do you seek today?",
+    "timestamp": "13:54:46"
+  },
+  {
+    "id": 1765634090743,
+    "sender": "user",
+    "text": "anatomy",
+    "timestamp": "13:54:50"
+  },
+  {
+    "id": 1765634095039,
+    "sender": "assistant",
+    "text": " Ah, the intricate dance of life's machinery! The human body, a masterpiece of form and function. Let us delve into its mysteries, exploring the delicate balance of bones, muscles, and sinews. How specifically would you like to dissect this grand design? A muscle's structure, perhaps, or the labyrinthine veins?",
+    "timestamp": "13:54:55"
+  }
+]
