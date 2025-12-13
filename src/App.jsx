@@ -4,102 +4,102 @@ import { Routes, Route } from "react-router-dom";
 import Chat from "./pages/Chat.jsx";
 import History from "./pages/MessageHistory.jsx";
 import About from "./pages/About.jsx";
-import ChatHeader from "./components/chat/ChatHeader.jsx";
+import BottomNav from "./components/layout/TopBar.jsx";
 
-import "./App.css";
+import background from "./assets/background.mp4";
 
-import background from "./assets/background.mp4"
+// Configuration
+const API_URL = "http://localhost:5000/api/chat";
+const MESSAGE_SEND_DELAY = 600; // ms delay before sending to bot
+const TIMESTAMP_OFFSET = 1; // unique ID offset for bot messages
 
-const initialMessages = [
-  {
-    id: 1,
-    sender: "assistant",
-    text: "Greetings. I am Leonardo da Vinci, engineer and student of nature’s mechanisms. Describe your problem or idea, and we will examine how it might work.",
-    timestamp: new Date().toLocaleTimeString(),
-  },
-];
+const INITIAL_GREETING = {
+  id: 1,
+  sender: "assistant",
+  text: "Greetings. I am Leonardo da Vinci, engineer and student of nature's mechanisms. Describe your problem or idea, and we will examine how it might work.",
+  timestamp: new Date().toLocaleTimeString(),
+};
+
+const ERROR_MESSAGES = {
+  network: "It seems our connection is disrupted, like a broken gear. Try your question once more.",
+  noResponse: "The device that conveys our messages seems to have ceased its motion. I receive no response.",
+};
+
+//Creates a message object with consistent structure
+const createMessage = (text, sender, timestamp = new Date().toLocaleTimeString()) => ({
+  id: Date.now() + (sender === "assistant" ? TIMESTAMP_OFFSET : 0),
+  sender,
+  text,
+  timestamp,
+});
 
 function App() {
-  const [messages, setMessages] = useState(initialMessages);
-  const [isLoading, setIsLoading] = useState(false);
+  const [messages, setMessages] = useState([INITIAL_GREETING]);
   const [isBotTyping, setIsBotTyping] = useState(false);
-  const [serverStatus, setServerStatus] = useState("idle");
   const [chatID, setChatID] = useState(null);
 
-  const handleSendMessage = (text) => {
+  const handleSendMessage = async (text) => {
     const trimmed = text.trim();
     if (!trimmed) return;
 
-    const userMessage = {
-      id: Date.now(),
-      sender: "user",
-      text: trimmed,
-      timestamp: new Date().toLocaleTimeString(),
-    };
-
+    // Add user message immediately
+    const userMessage = createMessage(trimmed, "user");
     setMessages((prev) => [...prev, userMessage]);
-    setIsLoading(true);
     setIsBotTyping(true);
-    setTimeout(async () => {
-      try {
-        const res = await fetch("http://localhost:5000/api/chat", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-              message: userMessage, 
-              chatID: chatID
-            }),
-        });
-        const data = await res.json();
-        const replyText = data?.reply?.text || "The device that conveys our messages seems to have ceased its motion. I receive no response.";
-        
-        if (!chatID && data.chatID) {
-          setChatID(data.chatID);
-        }
 
-        const botMessage = {
-          id: Date.now() + 1,
-          sender: "assistant",
-          text: replyText,
-          timestamp: new Date().toLocaleTimeString(),
-        };
-        setMessages((prev) => [...prev, botMessage]);
-      } catch (err) {
-        console.error("Error fetching bot reply:", err);
-        setServerStatus("error");
+    // Delay bot response slightly for UX
+    setTimeout(() => sendMessageToBot(userMessage), MESSAGE_SEND_DELAY);
+  };
 
-        const errorMessage = {
-          id: Date.now() + 1,
-          sender: "assistant",
-          text: "It seems our connection is disrupted, like a broken gear. Try your question once more.",
-          timestamp: new Date().toLocaleTimeString(),
-        };
-        setMessages((prev) => [...prev, errorMessage]);
-      } finally {
-        setIsLoading(false);
-        setIsBotTyping(false);
+  const sendMessageToBot = async (userMessage) => {
+    try {
+      const res = await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          message: userMessage,
+          chatID,
+        }),
+      });
+
+      const data = await res.json();
+      const replyText = data?.reply?.text || ERROR_MESSAGES.noResponse;
+
+      // Store new chat ID if this is first message
+      if (!chatID && data.chatID) {
+        setChatID(data.chatID);
       }
-    }, 600);
+
+      const botMessage = createMessage(replyText, "assistant");
+      setMessages((prev) => [...prev, botMessage]);
+    } catch (err) {
+      console.error("Error fetching bot reply:", err);
+      const errorMessage = createMessage(ERROR_MESSAGES.network, "assistant");
+      setMessages((prev) => [...prev, errorMessage]);
+    } finally {
+      setIsBotTyping(false);
+    }
   };
 
   return (
     <div className="app">
-
       <video autoPlay muted loop playsInline preload="auto" id="myVideo">
         <source src={background} type="video/mp4" />
       </video>
 
+      
+      {/* Stack layers behind chat shell */}
+      <div className="stack-layer stack-layer-1"></div>
+      <div className="stack-layer stack-layer-2"></div>
+      
       <main className="chat-shell" aria-label="Leonardo da Vinci chatbot">
-        <ChatHeader />
         <Routes>
           <Route
             path="/"
             element={
               <Chat
                 messages={messages}
-                isLoading={isLoading}
-                isBotTyping={isBotTyping}      
-                serverStatus={serverStatus} 
+                isBotTyping={isBotTyping}
                 handleSendMessage={handleSendMessage}
               />
             }
@@ -108,6 +108,8 @@ function App() {
           <Route path="/about" element={<About />} />
         </Routes>
       </main>
+
+      <BottomNav />
     </div>
   );
 }

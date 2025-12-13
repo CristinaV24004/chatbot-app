@@ -1,0 +1,49 @@
+/* Reset + Base */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; padding: 0; }
+body {
+  background-color: var(--parchment-light);
+  color: var(--ink-dark);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow: hidden;
+}
+
+h1, h2, h3, h4 { font-family: var(--font-header); color: var(--ink-charcoal); margin-top: 0; }
+button {
+  background-color: var(--ink-action);
+  color: #F5E6D3;
+  font-family: var(--font-body);
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+button:hover { background-color: #4a3c25; color: #FFF8F0; }
+input, textarea {
+  background-color: var(--parchment-soft);
+  border: 1px solid var(--sepia-line);
+  padding: 0.6rem;
+  font-family: var(--font-body);
+  color: var(--ink-dark);
+  border-radius: 4px;
+}
+
+.app {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  padding-bottom: var(--topbar-height);
+}
+
+#myVideo {
+  opacity: 75%;
+  z-index: -1;
+  position: fixed;
+  left: 0; top: 0;
+  min-width: 100%;
+  min-height: 100%;
+}

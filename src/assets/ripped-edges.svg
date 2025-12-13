@@ -1,0 +1,17 @@
+<svg viewBox="0 0 1000 50" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+  <!-- Ripped/torn paper edge with jagged, irregular pattern -->
+  <defs>
+    <filter id="roughen">
+      <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="3" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+  </defs>
+  
+  <!-- Main torn edge path -->
+  <path d="M 0,10 Q 50,5 100,15 T 200,12 T 300,18 T 400,10 T 500,16 T 600,11 T 700,17 T 800,12 T 900,14 T 1000,10 L 1000,50 L 0,50 Z" 
+        fill="#1a1a1a" opacity="0.4" filter="url(#roughen)"/>
+  
+  <!-- Additional texture for realism -->
+  <path d="M 0,15 Q 60,8 120,18 T 240,14 T 360,16 T 480,12 T 600,17 T 720,13 T 840,15 T 1000,12 L 1000,50 L 0,50 Z" 
+        fill="#000000" opacity="0.15" filter="url(#roughen)"/>
+</svg>

@@ -1,0 +1,71 @@
+/* Bottom Navigation */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  width: 100%;
+  background-color: rgba(248, 242, 230, 0.95);
+  border-top: 2px solid var(--sepia-line);
+  backdrop-filter: blur(2px);
+  min-height: var(--topbar-height);
+  overflow: clip;
+}
+.bottom-nav-inner {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0.15rem 0.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+.bottom-nav-left .chat-header-inner { justify-content: flex-start; }
+.bottom-nav-left { display: flex; align-items: center; }
+.bottom-nav-right { display: flex; align-items: center; }
+
+.chat-header-inner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.75rem;
+}
+.chat-avatar {
+  /* avatar scales with topbar height */
+  width: calc(var(--topbar-height) - 26px);
+  height: calc(var(--topbar-height) - 26px);
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--sepia-line);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+.chat-title-block h1 { font-size: clamp(1.05rem, 2vw, 1.35rem); margin-bottom: 0.08rem; }
+.chat-title-block { text-align: left; }
+.chat-subtitle { margin: 0; font-size: clamp(0.72rem, 1.5vw, 0.85rem); color: var(--ink-dark); opacity: 0.85; }
+
+/* Navbar */
+.navbar { border: none; padding: 0; margin: 0; background: transparent; }
+.navbar-links { display: flex; justify-content: flex-end; align-items: center; gap: 0.85rem; }
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 650;
+  color: var(--ink-dark);
+  padding: 0.45rem 0.75rem;
+  border-radius: 6px;
+  background-color: rgba(119,95,58,0.10);
+  border: 1px solid rgba(119,95,58,0.15);
+  transition: all 0.25s ease;
+}
+.nav-link:hover { background-color: rgba(0,0,0,0.18); border: 1px solid rgba(119,95,58,0.3); }
+.nav-link--active { border-bottom: 2px solid var(--ink-dark); font-weight: 750; transform: translateY(-1px); }
+
+.nav-icon {
+  width: 22px;
+  height: 22px;
+}
