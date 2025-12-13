@@ -60,7 +60,11 @@
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 750px) {
+  .stack-layer {
+    transform: translateY(0) translateX(0) rotate(0);
+  }
+
   .navbar-links {
     flex-wrap: wrap;
     justify-content: flex-end;
