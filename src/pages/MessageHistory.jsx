@@ -92,7 +92,12 @@ const MessageHistory = ({ setMessages }) => {
       ) : (
         <ul className="history-list">
           {chats.map((chatId, idx) => (
-            <button key={chatId} onClick={handleChatLoad(chatId)}>
+            <button 
+              key={chatId} 
+              onClick={handleChatLoad(chatId)}
+              aria-label={`Load chat ${idx + 1}`}
+              title={`Load conversation ${idx + 1} (ID: ${chatId})`}
+            >
               Chat: {idx + 1}
             </button>
           ))}

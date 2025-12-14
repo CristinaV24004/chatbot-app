@@ -4,12 +4,6 @@ import LeonardoPortrait from "../../assets/leonardo-portrait.jpeg";
 function ChatHeader() {
   return (
     <div className="chat-header-inner">
-      <img
-        src={LeonardoPortrait}
-        alt="Portrait of Leonardo da Vinci"
-        className="chat-avatar"
-      />
-
       <div className="chat-title-block">
         <h1>Leonardo da Vinci</h1>
       </div>

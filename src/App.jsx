@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Chat from "./pages/Chat.jsx";
@@ -37,6 +37,29 @@ function App() {
   const [messages, setMessages] = useState([INITIAL_GREETING]);
   const [isBotTyping, setIsBotTyping] = useState(false);
   const [chatID, setChatID] = useState(null);
+  const [accessibilityMode, setAccessibilityMode] = useState(() => {
+    return localStorage.getItem("accessibilityMode") === "true";
+  });
+
+  // Toggle accessibility mode and persist to localStorage
+  const toggleAccessibility = () => {
+    const newMode = !accessibilityMode;
+    setAccessibilityMode(newMode);
+    localStorage.setItem("accessibilityMode", newMode);
+    
+    if (newMode) {
+      document.documentElement.classList.add("accessibility-mode");
+    } else {
+      document.documentElement.classList.remove("accessibility-mode");
+    }
+  };
+
+  // Apply accessibility mode on component mount
+  useEffect(() => {
+    if (accessibilityMode) {
+      document.documentElement.classList.add("accessibility-mode");
+    }
+  }, []);
 
   const handleNewChat = () => {
     setMessages([INITIAL_GREETING]);
@@ -114,7 +137,7 @@ function App() {
         </Routes>
       </main>
 
-      <BottomNav onNewChat={handleNewChat} />
+      <BottomNav onNewChat={handleNewChat} onToggleAccessibility={toggleAccessibility} />
     </div>
   );
 }
