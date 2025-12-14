@@ -16,7 +16,7 @@ I am terribly sorry, I cannot provide an answer to your question.
 `;
 
 // Minimum confidence score required for local intent classifier
-const PRECISION_THRESHOLD = 0.65;
+const CONFIDENCE_THRESHOLD = 0.80;
 
 // Holds the final reply object
 let replyObj = null;
@@ -42,16 +42,15 @@ export default async function generateReply(message, chatSlice) {
 
     // Validate the response (check for forbidden words, extreme length)
     const validationResult = validateResponse(response);
-    console.log("Response validation returned: ", validationResult ? "response" : validationResult);
-
-    // Nullify response if it fails validation
-    response = validationResult ? response : null;
-
-    // If still no response, use fallback
-    if (!response) {
+    
+    // Use fallback response if generated repsonse did not pass validation
+    if (!validateResponse) {
+        superlog("WARNING", "Response did not pass validation!" + response);
         response = fallbackReply;
+    } else {
+        superlog("OK", "Response passed validation!");
     }
-
+    
     // Build standardized reply object
     replyObj = {
         id: Date.now(),          // unique id for this message
@@ -73,12 +72,14 @@ export async function generateLocalReply(message) {
     let response = null;
 
     // Only use local reply if confidence exceeds threshold
-    if (intent && score >= PRECISION_THRESHOLD) {
-        superlog("OUTCOME", `Local classifier passed the threshold ${score}>${PRECISION_THRESHOLD}`);
+    if (intent && score >= CONFIDENCE_THRESHOLD) {
+        superlog("OUTCOME", `Local classifier passed the threshold for ${intent}`);
 
         // Find matching topic and its predefined reply
         const topic = intents.topics.find(t => t.id === intent);
         response = getRandomReply(topic);    
+    } else {
+        superlog("OUTCOME", `Local classifier did not pass threshold`);
     }
     
     return response;
@@ -91,6 +92,7 @@ export async function generateLocalReply(message) {
  * @returns {string|null} - AI response text, or null if API fails
  */
 export async function generateAIReply(message, conversationSlice) {
+    superlog("REQUEST", "Sending request to HF");
     try {
         // Convert local message format to API format: { role, content }
         conversationSlice = conversationSlice.map(msg => ({
@@ -100,12 +102,12 @@ export async function generateAIReply(message, conversationSlice) {
 
         // Call AI API
         const aiResponse = await getAIResponse(conversationSlice, message);
-        console.log("[OK] Got response");
+        superlog("OK", "Response from HF received!");
         
         return aiResponse;
 
     } catch (err) {
-        console.error("[ERROR] Calling HF API did not go well:", err);
+        superlog("ERROR", "HF API call failed" + err);
         return null; // Return null so fallback or validation can handle it
     }
 }

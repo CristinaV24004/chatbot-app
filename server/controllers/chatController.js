@@ -54,7 +54,6 @@ export async function createChatMessage(req, res) {
     const userMessageObj = req.body.message;    // Incoming message object
     const userMessageText = userMessageObj.text; // Text content of user's message
     let chatID = req.body.chatID;               // Optional: existing chat ID
-    console.log(chatID);                        // Debug: log chat ID
     let chatPath = null;                        
 
     // If a chatID exists, load previous conversation
@@ -74,6 +73,7 @@ export async function createChatMessage(req, res) {
     if (!chatID) {
         chatID = generateChatID();
         chatPath = getChatFullPath(chatID);
+        console.log(`New chat: ${chatID} stored at ${chatPath}`);
     }
 
     // Save both user message and AI reply to storage

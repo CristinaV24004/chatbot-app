@@ -15,7 +15,8 @@
 }
 
 /* Conversation History Page */
-.message-history-page { 
+.message-history-page {
+  overflow-y: scroll;
   max-width: var(--container-width); 
   margin: 0 auto; 
 }

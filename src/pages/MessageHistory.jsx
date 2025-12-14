@@ -79,7 +79,7 @@ const MessageHistory = ({ setMessages }) => {
   }, []);
 
   return (
-    <div className="page">
+    <div className="page message-history-page">
       <h1>Message History</h1>
       <p>Start a chat, and your past questions will appear here like pages in a sketchbook.</p>
 

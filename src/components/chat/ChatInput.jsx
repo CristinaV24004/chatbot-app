@@ -32,6 +32,7 @@ function ChatInput({ onSend, disabled }) {
       </label>
       <input
         id="chat-input"
+        autoComplete="off"
         type="text"
         ref={inputRef}
         value={text}

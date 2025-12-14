@@ -8,3 +8,6 @@ plane
 car
 train
 internet
+rocket
+covid
+united states

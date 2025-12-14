@@ -2,6 +2,7 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import superlog from "../../utils/beautifulLogs.js";
 
 // __dirname and __filename setup for ES modules
 const __filename = fileURLToPath(import.meta.url);
@@ -22,9 +23,10 @@ export function loadChat(id) {
 
     try {
         const raw = fs.readFileSync(chatPath, 'utf-8'); // read file
+        superlog("OK", `Loaded chat ${id} successfully`);
         return JSON.parse(raw); // parse JSON into array of messages
     } catch (err) {
-        console.error('[ERROR] loadChat failed for', id, err);
+        superlog("ERROR", "loadChat for chat " + id + " failed. " + err);
         return []; // fallback to empty array if parsing fails
     }
 }
@@ -49,8 +51,9 @@ export function appendChat(chatFilePath, messageObj) {
 
         arr.push(messageObj); // add new message
         fs.writeFileSync(chatFilePath, JSON.stringify(arr, null, 2)); // write back atomically
+        superlog("OK", "Message saved and pushed to file");
     } catch (err) {
-        console.error('[ERROR] appendChat failed for', chatFilePath, err);
+        superlog("ERROR", "appendChat for " + chatFilePath + " has failed:" + err);
     }
 }
 
@@ -63,7 +66,7 @@ export function listChats() {
         const files = fs.readdirSync(chatsPath).filter(f => f.endsWith('.json'));
         return files.map(f => path.basename(f, '.json'));
     } catch (err) {
-        console.error('[ERROR] listChats failed', err);
+        superlog("ERROR", "listChats() failed" + err);
         return [];
     }
 }
