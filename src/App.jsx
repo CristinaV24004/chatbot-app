@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import Chat from "./pages/Chat.jsx";
 import History from "./pages/MessageHistory.jsx";
 import About from "./pages/About.jsx";
-import BottomNav from "./components/layout/TopBar.jsx";
+import BottomNav from "./components/layout/BottomBar.jsx";
 
 import background from "./assets/background.mp4";
 
@@ -37,6 +37,11 @@ function App() {
   const [messages, setMessages] = useState([INITIAL_GREETING]);
   const [isBotTyping, setIsBotTyping] = useState(false);
   const [chatID, setChatID] = useState(null);
+
+  const handleNewChat = () => {
+    setMessages([INITIAL_GREETING]);
+    setChatID(null);
+  };
 
   const handleSendMessage = async (text) => {
     const trimmed = text.trim();
@@ -109,7 +114,7 @@ function App() {
         </Routes>
       </main>
 
-      <BottomNav />
+      <BottomNav onNewChat={handleNewChat} />
     </div>
   );
 }

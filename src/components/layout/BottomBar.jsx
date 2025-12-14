@@ -2,7 +2,7 @@ import ChatHeader from "../chat/ChatHeader.jsx";
 import Navbar from "../common/Navbar.jsx";
 
 // Fixed bottom navigation container combining chat header and main navigation
-const BottomNav = () => {
+const BottomNav = ({ onNewChat }) => {
   return (
     <footer className="bottom-nav">
       <div className="bottom-nav-inner">
@@ -10,7 +10,7 @@ const BottomNav = () => {
           <ChatHeader />
         </div>
         <div className="bottom-nav-right">
-          <Navbar />
+          <Navbar onNewChat={onNewChat} />
         </div>
       </div>
     </footer>
