@@ -6,6 +6,27 @@ const Navbar = ({ onNewChat }) => {
     <nav className="navbar">
 
       <div className="navbar-links">
+      {/* New Chat button */}
+        <button
+          onClick={onNewChat}
+          className="nav-link nav-link--button"
+          aria-label="Start a new chat"
+          title="Start a fresh conversation"
+        >
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            viewBox="0 0 24 24"
+            className="nav-icon"
+          >
+            <path
+              d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+              fill="currentColor"
+            />
+          </svg>
+          <span className="visually-hidden">New Chat</span>
+        </button>
+
       {/* Apply active styling based on the current route */}
         <NavLink
           to="/"
@@ -94,26 +115,6 @@ const Navbar = ({ onNewChat }) => {
           </svg>
           <span className="visually-hidden">About</span>
         </NavLink>
-
-        <button
-          onClick={onNewChat}
-          className="nav-link nav-link--button"
-          aria-label="Start a new chat"
-          title="Start a fresh conversation"
-        >
-          <svg
-            aria-hidden="true"
-            focusable="false"
-            viewBox="0 0 24 24"
-            className="nav-icon"
-          >
-            <path
-              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9H13V8.5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5V11H8.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5H11v2.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V14h2.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5z"
-              fill="currentColor"
-            />
-          </svg>
-          <span className="visually-hidden">New Chat</span>
-        </button>
 
       </div>
     </nav>
