@@ -92,11 +92,9 @@ const MessageHistory = ({ setMessages }) => {
       ) : (
         <ul className="history-list">
           {chats.map((chatId, idx) => (
-            <li key={chatId}>
-              <button onClick={handleChatLoad(chatId)}>
-                Chat: {idx + 1}
-              </button>
-            </li>
+            <button key={chatId} onClick={handleChatLoad(chatId)}>
+              Chat: {idx + 1}
+            </button>
           ))}
         </ul>
       )}
