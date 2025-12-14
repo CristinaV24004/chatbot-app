@@ -7,7 +7,7 @@
   min-height: calc(100dvh - var(--topbar-height) - 20px);
   margin-top: 4dvh;
   padding-top: 1dvh;
-  background-color: rgba(210, 190, 160, 0.85);
+  background-color: rgba(210, 190, 160, 0.65);
   background-image: url("https://www.transparenttextures.com/patterns/old-wall.png");
   background-size: cover;
   background-blend-mode: multiply;
