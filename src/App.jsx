@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import Chat from "./pages/Chat.jsx";
 import History from "./pages/MessageHistory.jsx";
 import About from "./pages/About.jsx";
-import BottomNav from "./components/layout/BottomBar.jsx";
+import TopNav from "./components/layout/TopBar.jsx";
 
 import background from "./assets/background.mp4";
 
@@ -40,6 +40,7 @@ function App() {
   const [accessibilityMode, setAccessibilityMode] = useState(() => {
     return localStorage.getItem("accessibilityMode") === "true";
   });
+  const [isFading, setIsFading] = useState(false);
 
   // Toggle accessibility mode and persist to localStorage
   const toggleAccessibility = () => {
@@ -62,8 +63,15 @@ function App() {
   }, []);
 
   const handleNewChat = () => {
-    setMessages([INITIAL_GREETING]);
-    setChatID(null);
+    // Fade out effect
+    setIsFading(true);
+    
+    // Wait for fade out, then update messages and fade back in
+    setTimeout(() => {
+      setMessages([INITIAL_GREETING]);
+      setChatID(null);
+      setIsFading(false);
+    }, 300);
   };
 
   const handleSendMessage = async (text) => {
@@ -112,6 +120,7 @@ function App() {
 
   return (
     <div className="app">
+      <TopNav onNewChat={handleNewChat} onToggleAccessibility={toggleAccessibility} />
       <video autoPlay muted loop playsInline preload="auto" id="myVideo">
         <source src={background} type="video/mp4" />
       </video>
@@ -119,7 +128,7 @@ function App() {
       <div className="stack-layer stack-layer-1"></div>
       <div className="stack-layer stack-layer-2"></div>
       
-      <main className="chat-shell" aria-label="Leonardo da Vinci chatbot">
+      <main className="chat-shell" aria-label="Leonardo da Vinci chatbot" style={{ opacity: isFading ? 0 : 1, transition: "opacity 0.3s ease" }}>
         <Routes>
           <Route
             path="/"
@@ -137,7 +146,6 @@ function App() {
         </Routes>
       </main>
 
-      <BottomNav onNewChat={handleNewChat} onToggleAccessibility={toggleAccessibility} />
     </div>
   );
 }

@@ -40,7 +40,8 @@ function ChatInput({ onSend, disabled }) {
         placeholder="Ask Leonardo about art, science, invention, or anatomy..."
         disabled={disabled}
       />
-      <button 
+      <button
+        tabIndex={0}
         type="submit" 
         disabled={disabled || !text.trim()}
         aria-label="Send message"

@@ -1,6 +1,6 @@
 /* Responsive */
 @media (max-width: 1024px) {
-  .bottom-nav-inner { 
+  .top-nav-inner { 
     padding: 0.35rem 0.45rem; 
   }
 
@@ -38,11 +38,11 @@
   }
 
   .stack-layer-1 {
-    transform: translateY(10px) translateX(12px) rotate(-12deg);
+    transform: translateX(-50%) translateY(10px) translateX(12px) rotate(-12deg);
   }
 
   .stack-layer-2 {
-    transform: translateY(20px) translateX(22px) rotate(10deg);
+    transform: translateX(-50%) translateY(20px) translateX(22px) rotate(10deg);
   }
 
   .chat-main { 
@@ -62,7 +62,7 @@
 
 @media (max-width: 750px) {
   .stack-layer {
-    transform: translateY(0) translateX(0) rotate(0);
+    transform: translateX(-50%);
   }
 
   .navbar-links {
