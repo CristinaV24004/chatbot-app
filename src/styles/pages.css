@@ -3,7 +3,9 @@
   max-width: var(--container-width); 
   margin: 0 auto; 
   padding: 1.5rem 2rem 0; 
-  text-align: justify; 
+  text-align: justify;
+  max-height: calc(100dvh - var(--topbar-height) - 2rem);
+  overflow-y: auto;
 }
 
 .page p { 
@@ -41,41 +43,7 @@
   font-family: inherit; 
 }
 
-.btn-primary { 
-  background-color: #8b6f47; 
-  color: #FFF8F0; 
-  font-weight: 500; 
-}
-
-.btn-primary:hover { 
-  background-color: #6b5535; 
-  transform: translateY(-2px); 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); 
-}
-
-.btn-secondary { 
-  background-color: #a89968; 
-  color: #FFF8F0; 
-  font-weight: 500; 
-}
-
-.btn-secondary:hover { 
-  background-color: #8b7a52; 
-  transform: translateY(-2px); 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); 
-}
-
-.btn-danger { 
-  background-color: #c97f7f; 
-  color: #FFF8F0; 
-  font-weight: 500; 
-}
-
-.btn-danger:hover { 
-  background-color: #a85a5a; 
-}
-
-.btn-small { 
+.btn-delete { 
   padding: 0.4rem 0.8rem; 
   font-size: 0.85rem; 
 }

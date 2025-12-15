@@ -47,7 +47,7 @@ button {
 
 button:hover { 
   background-color: #4a3c25; 
-  color: #FFF8F0; 
+  color: var(--off-white); 
 }
 
 button:focus,

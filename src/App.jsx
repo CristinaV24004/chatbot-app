@@ -110,7 +110,6 @@ function App() {
       const botMessage = createMessage(replyText, "assistant");
       setMessages((prev) => [...prev, botMessage]);
     } catch (err) {
-      console.error("Error fetching bot reply:", err);
       const errorMessage = createMessage(ERROR_MESSAGES.network, "assistant");
       setMessages((prev) => [...prev, errorMessage]);
     } finally {
@@ -120,7 +119,7 @@ function App() {
 
   return (
     <div className="app">
-      <TopNav onNewChat={handleNewChat} onToggleAccessibility={toggleAccessibility} />
+      <TopNav messages={messages} onNewChat={handleNewChat} onToggleAccessibility={toggleAccessibility} />
       <video autoPlay muted loop playsInline preload="auto" id="myVideo">
         <source src={background} type="video/mp4" />
       </video>

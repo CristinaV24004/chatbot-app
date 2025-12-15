@@ -7,6 +7,22 @@ const MessageHistory = ({ setMessages }) => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
+  // Converts timestamp back to date
+  function timestampToDate(timestamp) {
+    const formatted = new Intl.DateTimeFormat('en-GB', {
+      day: '2-digit',
+      month: '2-digit',
+      year: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false
+    }).format(Number(timestamp));
+    
+
+    return formatted;
+  }
+
   // Handler for loading a saved chat
   const handleChatLoad = (chatId) => async () => {
     if (!chatId || !setMessages) return;
@@ -21,18 +37,16 @@ const MessageHistory = ({ setMessages }) => {
         }
       );
       if (!res.ok) {
-        console.error(`[ERROR] Failed to load chat ${chatId}:`, res.status);
         return;
       }
 
       const chatMessages = await res.json();
-      console.log(`[OK] Loaded chat ${chatId}:`, chatMessages);
       // Update parent App's messages state
       setMessages(chatMessages);
       // navigate back to the chat page
       navigate("/", { replace: true });
     } catch (err) {
-      console.error(`[ERROR] Failed to load chat ${chatId}:`, err);
+      // Handle error silently
     }
   };
 
@@ -98,7 +112,7 @@ const MessageHistory = ({ setMessages }) => {
               aria-label={`Load chat ${idx + 1}`}
               title={`Load conversation ${idx + 1} (ID: ${chatId})`}
             >
-              Chat: {idx + 1}
+              Chat: {timestampToDate(chatId).toString()}
             </button>
           ))}
         </ul>

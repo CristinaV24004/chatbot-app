@@ -77,8 +77,17 @@
     padding: 0.3rem 0.5rem;
   }
 
+  .nav-label {
+    display: none !important;
+  }
+
   .chat-header-inner {
     gap: 0.55rem;
+  }
+
+  .chat-main {
+    padding: 0.7rem 0.9rem;
+    padding-bottom: 5rem;
   }
 }  
 
@@ -95,5 +104,69 @@
   .nav-link { 
     font-size: 0.9rem; 
     padding: 0.3rem 0.5rem; 
+  }
+
+  .chat-main {
+    padding: 0.6rem 0.8rem;
+    padding-bottom: 4.5rem;
+  }
+
+  .user-message,
+  .bot-message {
+    max-width: 85%;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.95rem;
+  }
+
+  .chat-input-bar {
+    gap: 0.4rem;
+    padding: 0.5rem 0.7rem;
+  }
+
+  .chat-input-bar button {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .chat-title-block h1 {
+    font-size: 0.95rem;
+  }
+
+  .nav-link {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.35rem;
+  }
+
+  .chat-input-bar {
+    gap: 0.3rem;
+    padding: 0.4rem 0.5rem;
+  }
+
+  .chat-input-bar input {
+    font-size: 0.85rem;
+  }
+
+  .chat-input-bar button {
+    padding: 0.35rem 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  .chat-main {
+    padding: 0.5rem 0.6rem;
+    padding-bottom: 4.2rem;
+  }
+
+  .user-message,
+  .bot-message {
+    max-width: 90%;
+    padding: 0.4rem 0.6rem;
+    font-size: 0.9rem;
+  }
+
+  .message-avatar {
+    width: 40px;
+    height: 40px;
   }
 }
