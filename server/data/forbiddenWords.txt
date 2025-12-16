@@ -1,5 +1,5 @@
 phone
-ai
+artificial intellegence
 computer
 smartphone
 microwave
@@ -10,4 +10,23 @@ train
 internet
 rocket
 covid
-united states
+internet
+electricity
+virus
+covid
+computer
+ai
+algorithm
+vaccine
+engine
+quantum
+space
+nuclear
+machine learning
+ml
+lightbulb
+keyboard
+motherboard
+online
+interface
+programming
